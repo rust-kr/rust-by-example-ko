@@ -1,38 +1,36 @@
-# Formatting
+# 출력 형식
 
-We've seen that formatting is specified via a *format string*:
+출력 형식을 지정할 때 *형식 지정 문자열*을 사용하는 것을 앞에서 보았습니다.
 
 * `format!("{}", foo)` -> `"3735928559"`
 * `format!("0x{:X}", foo)` ->
   [`"0xDEADBEEF"`][deadbeef]
 * `format!("0o{:o}", foo)` -> `"0o33653337357"`
 
-The same variable (`foo`) can be formatted differently depending on which
-*argument type* is used: `X` vs `o` vs *unspecified*.
+동일한 변수(`foo`)도 `X`, `o` 등 형식 지정에 따라 다르게 출력됩니다.
 
-This formatting functionality is implemented via traits, and there is one trait
-for each argument type. The most common formatting trait is `Display`, which
-handles cases where the argument type is left unspecified: `{}` for instance.
+형식을 지정하는 기능은 트레잇을 통해서 구현고, 인자의 자료형에 따라 트레잇이
+한가지씩 있습니다. 가장 자주 쓰이는 트레잇은 `Display` 이고, 형식을 지정하지
+않는 경우 `{}` 를  담당합니다.
 
 ```rust,editable
 use std::fmt::{self, Formatter, Display};
 
 struct City {
     name: &'static str,
-    // Latitude
+    // 위도(Latitude)
     lat: f32,
-    // Longitude
+    // 경도(Longitude)
     lon: f32,
 }
 
 impl Display for City {
-    // `f` is a buffer, and this method must write the formatted string into it
+    // 여기서 f 는 버퍼이며, 이 함수는 형식이 처리된 문자열을 버퍼에 출력해야 합니다.
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         let lat_c = if self.lat >= 0.0 { 'N' } else { 'S' };
         let lon_c = if self.lon >= 0.0 { 'E' } else { 'W' };
 
-        // `write!` is like `format!`, but it will write the formatted string
-        // into a buffer (the first argument)
+        // write! 는 format! 과 비슷하지만 문자열을 버퍼 (첫번째 인자)에 출력합니다.
         write!(f, "{}: {:.3}°{} {:.3}°{}",
                self.name, self.lat.abs(), lat_c, self.lon.abs(), lon_c)
     }
@@ -58,19 +56,18 @@ fn main() {
         Color { red: 0, green: 3, blue: 254 },
         Color { red: 0, green: 0, blue: 0 },
     ].iter() {
-        // Switch this to use {} once you've added an implementation
-        // for fmt::Display.
+        // fmt::Display 를 구현한 다음에 {} 로 변경해보세요.
         println!("{:?}", *color);
     }
 }
 ```
 
-You can view a [full list of formatting traits][fmt_traits] and their argument
-types in the [`std::fmt`][fmt] documentation.
+[`std::fmt`][fmt] 문서에 [형식지정 트레잇 전체 목록][fmt_traits]과 인자들이 
+있습니다.
 
-### Activity
-Add an implementation of the `fmt::Display` trait for the `Color` struct above
-so that the output displays as:
+### 실습
+
+`Color` 구조체를 위한 `fmt::Display` 트레잇을 구현해서 다음처럼 출력되게 해보세요.
 
 ```text
 RGB (128, 255, 90) 0x80FF5A
@@ -78,11 +75,11 @@ RGB (0, 3, 254) 0x0003FE
 RGB (0, 0, 0) 0x000000
 ```
 
-Two hints if you get stuck:
- * You [may need to list each color more than once][named_parameters],
- * You can [pad with zeros to a width of 2][fmt_width] with `:02`.
+다음을 참고하시면 구현할 수 있습니다. :
+ * [각각의 색상을 한번 이상 표시하기][named_parameters],
+ * `:02` 로 [0을 붙여서 2글자로 출력하기][fmt_width].
 
-### See also:
+### 참고:
 
 [`std::fmt`][fmt]
 

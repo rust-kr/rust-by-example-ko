@@ -1,51 +1,48 @@
 # 코멘트
 
-모든 프로그램에는 코멘트가 필요합니다. 러스트에서 지원하는 코멘트들은 
-다음과 같습니다.
+모든 프로그램에는 코멘트가 필요합니다. 러스트는 몇가지 코멘트 문법을 
+지원합니다.
 
-* *일반 코멘트* 는 컴파일러가 관여하지 않습니다.:
+* *일반 코멘트*의 내용에는 컴파일러가 관여하지 않습니다. :
    * `// 한 줄 코멘트는 해당 줄의 끝까지 무시됩니다.`
    * `/* 블럭 코멘트는 종료 표시가 나올 때까지 무시됩니다. */`
-* *Doc comments* which are parsed into HTML library
-  [documentation][docs]:
-   * `/// Generate library docs for the following item.`
-   * `//! Generate library docs for the enclosing item.`
+* *문서 코멘트*는 [라이브러리 문서][docs]의 생성에 사용됩니다. :
+   * `/// 코멘트 다음에 오는 항목의 문서를 생성합니다.`
+   * `//! 코멘트를 감싸는 것의 문서를 생성합니다.`
 
 ```rust,editable
 fn main() {
-    // This is an example of a line comment
-    // There are two slashes at the beginning of the line
-    // And nothing written inside these will be read by the compiler
+    // 이것이 한 줄 코멘트입니다.
+    // 슬래시 두 개를 줄의 맨 앞에 넣으면 됩니다.
+    // 컴파일러는 코멘트 안에 있는 것은 아무것도 읽지 않습니다.
 
     // println!("Hello, world!");
 
-    // Run it. See? Now try deleting the two slashes, and run it again.
+    // 실행해보세요. 뭐가 보이나요? 윗줄에서 슬래시 두개를 지우고 다시 실행해보면요?
 
     /* 
-     * This is another type of comment, a block comment. In general,
-     * line comments are the recommended comment style. But
-     * block comments are extremely useful for temporarily disabling
-     * chunks of code. /* Block comments can be /* nested, */ */
-     * so it takes only a few keystrokes to comment out everything
-     * in this main() function. /*/*/* Try it yourself! */*/*/
+     * 이건 블럭 코멘트입니다. 일반적으로는 한줄 코멘트를 많이 사용합니다. 하지만
+     * 임시로 코드를 막을 때에는 블럭 코멘트가 아주 편리합니다.
+     * /* 블럭 코멘트는 /* 중첩 */ 될 수 있습니다. */
+     * 이 main 함수 안의 모든 것을 코멘트로 감싸는 것도 몇번의 타이핑이면 충분합니다.
+     * /*/*/* 직접 해보세요! */*/*/
      */
 
     /*
-    Note: The previous column of `*` was entirely for style. There's
-    no actual need for it.
+    주의: 위의 블럭 코멘트 앞쪽에 `*` 컬럼은 보기 좋으라고 넣은 것입니다. 
+    반드시 코멘트앞에 '*' 를 넣어야 하는 것은 아닙니다.
     */
 
-    // You can manipulate expressions more easily with block comments
-    // than with line comments. Try deleting the comment delimiters
-    // to change the result:
+    // 표현식을 다룰 때는 블럭 코멘트가 한줄 코멘트보다 편리합니다.
+    // 다음에서 코멘트를 삭제하고 결과가 어떻게 바뀌는지 확인해보세요.
     let x = 5 + /* 90 + */ 5;
-    println!("Is `x` 10 or 100? x = {}", x);
+    println!("x 는 10 인가 아니면 100 인가? x 는 {} 이다.", x);
 }
 
 ```
 
-### See also:
+### 참고:
 
-[Library documentation][docs]
+[라이브러리 문서][docs]
 
 [docs]: ../meta/doc.md

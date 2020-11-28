@@ -2,13 +2,13 @@
 
 [들어가며](index.md)
 
-- [Hello World](hello.md)
+- [인사하기](hello.md)
     - [코멘트](hello/comment.md)
-    - [Formatted print](hello/print.md)
+    - [형식을 지정하는 출력](hello/print.md)
         - [Debug](hello/print/print_debug.md)
         - [Display](hello/print/print_display.md)
-            - [Testcase: List](hello/print/print_display/testcase_list.md)
-        - [Formatting](hello/print/fmt.md)
+            - [테스트 케이스: List](hello/print/print_display/testcase_list.md)
+        - [출력 형식](hello/print/fmt.md)
 
 - [기본 자료형](primitives.md)
     - [Literals and operators](primitives/literals.md)
