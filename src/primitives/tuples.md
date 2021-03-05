@@ -1,56 +1,55 @@
-# Tuples
+# 튜플
 
-A tuple is a collection of values of different types. Tuples are constructed
-using parentheses `()`, and each tuple itself is a value with type signature
-`(T1, T2, ...)`, where `T1`, `T2` are the types of its members. Functions can
-use tuples to return multiple values, as tuples can hold any number of values.
+튜플은 자료형이 다른 값들의 모음입니다. 튜플은 괄호`()`로 생성합니다.
+튜플 자체는 각각의 자료형을 `(T1, T2, ...)`와 같이 가집니다. 튜플은
+여러개의 값을 가지기 때문에 함수에서 여러개의 값을 리턴할 때 사용할 수 있습니다.
 
 ```rust,editable
-// Tuples can be used as function arguments and as return values
+// 튜플은 함수의 인자나 리턴값에 사용될 수 있습니다.
 fn reverse(pair: (i32, bool)) -> (bool, i32) {
-    // `let` can be used to bind the members of a tuple to variables
+    // let 으로 튜플의 요소들을 변수에 바인딩 할 수 있습니다.
     let (integer, boolean) = pair;
 
     (boolean, integer)
 }
 
-// The following struct is for the activity.
+// 다음 구조체는 실습에서 사용하세요.
 #[derive(Debug)]
 struct Matrix(f32, f32, f32, f32);
 
 fn main() {
-    // A tuple with a bunch of different types
+    // 각기 다른 자료형들로 만들어진 튜플
     let long_tuple = (1u8, 2u16, 3u32, 4u64,
                       -1i8, -2i16, -3i32, -4i64,
                       0.1f32, 0.2f64,
                       'a', true);
 
-    // Values can be extracted from the tuple using tuple indexing
+    // 인덱스 번호로 튜플 안의 값을 가져올 수 있습니다.
     println!("long tuple first value: {}", long_tuple.0);
     println!("long tuple second value: {}", long_tuple.1);
 
-    // Tuples can be tuple members
+    // 튜플도 튜플의 요소로 들어갈 수 있습니다.
     let tuple_of_tuples = ((1u8, 2u16, 2u32), (4u64, -1i8), -2i16);
 
-    // Tuples are printable
+    // 튜플을 출력해봅니다.
     println!("tuple of tuples: {:?}", tuple_of_tuples);
     
-    // But long Tuples cannot be printed
+    // 너무 긴 튜플은 출력할 수 없습니다.
     // let too_long_tuple = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
     // println!("too long tuple: {:?}", too_long_tuple);
-    // TODO ^ Uncomment the above 2 lines to see the compiler error
+    // TODO ^ 위의 두줄의 코멘트를 없애고 컴파일러 에러를 확인하세요.
 
     let pair = (1, true);
     println!("pair is {:?}", pair);
 
     println!("the reversed pair is {:?}", reverse(pair));
 
-    // To create one element tuples, the comma is required to tell them apart
-    // from a literal surrounded by parentheses
+    // 요소가 하나인 튜플도 만들 수 있습니다. 단순히 괄호로 감싼 변수와 
+    // 구분하기 위해 뒤에 쉼표를 하나 넣어줘야 합니다.
     println!("one element tuple: {:?}", (5u32,));
     println!("just an integer: {:?}", (5u32));
 
-    //tuples can be destructured to create bindings
+    // 튜플은 바인딩으로 분해할 수 있습니다.
     let tuple = (1, "hello", 4.5, true);
 
     let (a, b, c, d) = tuple;
@@ -62,28 +61,29 @@ fn main() {
 }
 ```
 
-### Activity
+### 실습
 
- 1. *Recap*: Add the `fmt::Display` trait to the Matrix `struct` in the above example,
-    so that if you switch from printing the debug format `{:?}` to the display
-    format `{}`, you see the following output:
+ 1. *복습*: 위의 예제에서 구조체 Matrix 에 `fmt::Display` 트레잇을 추가해서 
+    출력을 디버깅 포맷 `{:?}` 에서 디스플레이 포맷 `{}`으로 변경해도 동작하도록
+    하고, 다음처럼 출력되게 합니다.
 
     ```text
     ( 1.1 1.2 )
     ( 2.1 2.2 )
     ```
 
-    You may want to refer back to the example for [print display][print_display].
- 2. Add a `transpose` function using the `reverse` function as a template, which
-    accepts a matrix as an argument, and returns a matrix in which two elements
-    have been swapped. For example:
+    앞서 보았던 [예제][print_display]를 참고하세요.
+    
+
+ 2. `reverse` 함수를 기반으로 `transpose` 함수를 만들고, matrix 를 인자로 
+    받도록 해서, 두 요소를 바꿔치기한 matrix 를 리턴하게 하세요.
 
     ```rust,ignore
     println!("Matrix:\n{}", matrix);
     println!("Transpose:\n{}", transpose(matrix));
     ```
 
-    results in the output:
+    라고 하면 다음이 출력되게 만드시면 됩니다.
 
     ```text
     Matrix:

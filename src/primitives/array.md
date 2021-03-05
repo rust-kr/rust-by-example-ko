@@ -1,30 +1,27 @@
-# Arrays and Slices
+# 배열과 슬라이스
 
-An array is a collection of objects of the same type `T`, stored in contiguous
-memory. Arrays are created using brackets `[]`, and their length, which is known
-at compile time, is part of their type signature `[T; length]`.
+배열은 동일한 자료형(`T`)의 모음으로, 연속된 메모리에 저장됩니다. 대괄호 `[]` 
+로 정의하고, 길이는 `[T; length]` 로 컴파일 할 때 지정해야합니다.
 
-Slices are similar to arrays, but their length is not known at compile time.
-Instead, a slice is a two-word object, the first word is a pointer to the data,
-and the second word is the length of the slice. The word size is the same as 
-usize, determined by the processor architecture eg 64 bits on an x86-64. 
-Slices can be used to borrow a section of an array, and have the type signature 
-`&[T]`.
+슬라이스는 배열과 비슷한 개념입니다만, 컴파일 할 때 길이를 지정하지 않는 점이 다릅니다.
+대신, 객체 내부에 2개의 워드를 가집니다. 첫번째 워드는 데이터를 가리키는 포인터로 사용하고, 
+두번째 워드에는 슬라이스의 길이를 저장합니다. 워드는 usize와 크기가 같은데, 이 값은 CPU 에따라 달라집니다. 
+즉 x86-64 CPU에서는 64비트가 됩니다. 배열의 일부를 빌려올 때 사용할 수 있고, 문법은 `&[T]` 입니다.
 
 ```rust,editable,ignore,mdbook-runnable
 use std::mem;
 
-// This function borrows a slice
+// 이 함수는 슬라이스의 소유권을 빌려옵니다.
 fn analyze_slice(slice: &[i32]) {
-    println!("first element of the slice: {}", slice[0]);
-    println!("the slice has {} elements", slice.len());
+    println!("전달된 슬라이스의 첫 요소는 {}입니다.", slice[0]);
+    println!("전달된 슬라이스는 {}개의 요소를 가지고 있습니다.", slice.len());
 }
 
 fn main() {
-    // Fixed-size array (type signature is superfluous)
+    // 길이가 고정된 배열 (추가로 자료형을 지정하지 않아도 됩니다)
     let xs: [i32; 5] = [1, 2, 3, 4, 5];
 
-    // All elements can be initialized to the same value
+    // 모든 요소들을 같은 값으로 초기화할 수 있습니다.
     let ys: [i32; 500] = [0; 500];
 
     // Indexing starts at 0
@@ -48,7 +45,7 @@ fn main() {
     println!("borrow a section of the array as a slice");
     analyze_slice(&ys[1 .. 4]);
 
-    // Out of bound indexing causes compile error
+    // 아래 문장에서는 index out of bounds 오류가 발생합니다.
     println!("{}", xs[5]);
 }
 ```

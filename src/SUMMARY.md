@@ -11,9 +11,9 @@
         - [출력 형식](hello/print/fmt.md)
 
 - [기본 자료형](primitives.md)
-    - [Literals and operators](primitives/literals.md)
-    - [Tuples](primitives/tuples.md)
-    - [Arrays and Slices](primitives/array.md)
+    - [변수와 연산자](primitives/literals.md)
+    - [튜플](primitives/tuples.md)
+    - [배열과 슬라이스](primitives/array.md)
 
 - [Custom Types](custom_types.md)
     - [Structures](custom_types/structs.md)

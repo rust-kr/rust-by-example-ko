@@ -1,61 +1,61 @@
-# Primitives
+# 기본 자료형
 
-Rust provides access to a wide variety of `primitives`. A sample includes:
+러스트는 다양한 종류의 `기본 자료형`을 제공합니다. 여기서는 그중 몇가지를 소개합니다.
 
 
-### Scalar Types
+### 단순 자료형
 
-* signed integers: `i8`, `i16`, `i32`, `i64`, `i128` and `isize` (pointer size)
-* unsigned integers: `u8`, `u16`, `u32`, `u64`, `u128` and `usize` (pointer
-  size)
-* floating point: `f32`, `f64`
-* `char` Unicode scalar values like `'a'`, `'α'` and `'∞'` (4 bytes each)
-* `bool` either `true` or `false`
-* and the unit type `()`, whose only possible value is an empty tuple: `()`
+* 부호있는 정수: `i8`, `i16`, `i32`, `i64`, `i128`, `isize` (포인터 사이즈)
+* 부호없는 정수: `u8`, `u16`, `u32`, `u64`, `u128`, `usize` (포인터 사이즈)
+* 실수: `f32`, `f64`
+* `char` 유니코드 자료형 `'a'`, `'α'`, `'∞'` (각각 4바이트)
+* `bool` 자료형은 `true` 또는  `false` 의 값을 가집니다.
+* 그리고 유닛 자료형 `()`은 비어있는 튜플`()` 만을 값으로 가질 수 있습니다.
 
-Despite the value of a unit type being a tuple, it is not considered a
-compound type because it does not contain multiple values. 
+유닛 자료형의 값이 튜플이기는 하지만, 여러개의 값을 가지지는 않기때문에 
+복합자료형은 아닙니다.
 
-### Compound Types
+### 복합 자료형
 
-* arrays like `[1, 2, 3]`
-* tuples like `(1, true)`
+* `[1, 2, 3]` 과 같은 배열
+* `(1, true)` 과 같은 튜플
 
-Variables can always be *type annotated*. Numbers may additionally be
-annotated via a *suffix* or *by default*. Integers default to `i32` and
-floats to `f64`. Note that Rust can also infer types from context.
+모든 변수는 *자료형을 지정*할 수 있습니다. 숫자들은 *후위표시(suffix)* 로 
+자료형을 표시할 수 있습니다. 정수는 기본적으로 `i32` 이고 실수는 `f64` 입니다.
+러스트는 문맥으로부터 자료형을 추론 할 수 도 있습니다.
+
 
 ```rust,editable,ignore,mdbook-runnable
 fn main() {
-    // Variables can be type annotated.
+    // 변수에는 자료형을 지정할 수 있습니다.
     let logical: bool = true;
 
-    let a_float: f64 = 1.0;  // Regular annotation
-    let an_integer   = 5i32; // Suffix annotation
+    let a_float: f64 = 1.0;  // 보통의 자료형 지정
+    let an_integer   = 5i32; // 후위 표시
 
-    // Or a default will be used.
-    let default_float   = 3.0; // `f64`
-    let default_integer = 7;   // `i32`
+    // 또는 디폴트 자료형을 사용할 수도 있습니다.
+    let default_float   = 3.0; // f64
+    let default_integer = 7;   // i32
     
-    // A type can also be inferred from context 
-    let mut inferred_type = 12; // Type i64 is inferred from another line
+    // 문맥으로부터 자료형을 추론할 수도 있습니다.
+    let mut inferred_type = 12; // 다른 행으로부터 i64 자료형으로 추론되었습니다.
     inferred_type = 4294967296i64;
     
-    // A mutable variable's value can be changed.
-    let mut mutable = 12; // Mutable `i32`
+    // 가변(mutable) 변수만 값을 변경할 수 있습니다.
+    let mut mutable = 12; // 가변형 i32
     mutable = 21;
     
-    // Error! The type of a variable can't be changed.
+    // 에러! 변수의 자료형은 바뀔 수 없습니다.
     mutable = true;
     
-    // Variables can be overwritten with shadowing.
+    // 변수는 셰도우잉(shadowing) 으로 덮어 쓰여질 수 있습니다.
     let mutable = true;
 }
 ```
 
-### See also:
+### 참고
 
-[the `std` library][std], [`mut`][mut], [`inference`][inference], and [`shadowing`][shadowing]
+[`표준(std)` 라이브러리][std], [`mut`][mut], [`inference`][inference], [`shadowing`][shadowing]
 
 [std]: https://doc.rust-lang.org/std/
 [mut]: variable_bindings/mut.md
