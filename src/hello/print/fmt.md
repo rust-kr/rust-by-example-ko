@@ -1,16 +1,16 @@
 # 출력 형식
 
-출력 형식을 지정할 때 *형식 지정 문자열*을 사용하는 것을 앞에서 보았습니다.
+출력 형식을 지정할 때 *형식 지정자*를 사용하는 것을 앞에서 보았습니다.
 
 * `format!("{}", foo)` -> `"3735928559"`
 * `format!("0x{:X}", foo)` ->
   [`"0xDEADBEEF"`][deadbeef]
 * `format!("0o{:o}", foo)` -> `"0o33653337357"`
 
-동일한 변수(`foo`)도 `X`, `o` 등 형식 지정에 따라 다르게 출력됩니다.
+동일한 변수(`foo`)도 `X`, `o` 등 지정된 형식에 따라 다르게 출력됩니다.
 
-형식을 지정하는 기능은 트레잇을 통해서 구현고, 인자의 자료형에 따라 트레잇이
-한가지씩 있습니다. 가장 자주 쓰이는 트레잇은 `Display` 이고, 형식을 지정하지
+형식을 지정하는 기능은 트레잇을 통해서 구현되고, 인자의 자료형마다 트레잇이
+하나씨 있습니다. 가장 자주 쓰이는 트레잇은 `Display` 이고, 형식을 지정하지
 않는 경우 `{}` 를  담당합니다.
 
 ```rust,editable
@@ -25,12 +25,12 @@ struct City {
 }
 
 impl Display for City {
-    // 여기서 f 는 버퍼이며, 이 함수는 형식이 처리된 문자열을 버퍼에 출력해야 합니다.
+    // 여기서 f 는 버퍼이며, 이 함수에서는 형식이 처리된 문자열을 버퍼에 출력해야 합니다.
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         let lat_c = if self.lat >= 0.0 { 'N' } else { 'S' };
         let lon_c = if self.lon >= 0.0 { 'E' } else { 'W' };
 
-        // write! 는 format! 과 비슷하지만 문자열을 버퍼 (첫번째 인자)에 출력합니다.
+        // write! 는 format! 과 비슷하지만 문자열을 버퍼(첫번째 인자)에 출력합니다.
         write!(f, "{}: {:.3}°{} {:.3}°{}",
                self.name, self.lat.abs(), lat_c, self.lon.abs(), lon_c)
     }
@@ -56,7 +56,7 @@ fn main() {
         Color { red: 0, green: 3, blue: 254 },
         Color { red: 0, green: 0, blue: 0 },
     ].iter() {
-        // fmt::Display 를 구현한 다음에 {} 로 변경해보세요.
+        // Color 에 대해 fmt::Display 를 구현한 다음 아래의 {:?}를 {} 로 변경해보세요.
         println!("{:?}", *color);
     }
 }
@@ -67,7 +67,7 @@ fn main() {
 
 ### 실습
 
-`Color` 구조체를 위한 `fmt::Display` 트레잇을 구현해서 다음처럼 출력되게 해보세요.
+`Color` 구조체의 `fmt::Display` 트레잇을 구현해서 다음처럼 출력되게 해보세요.
 
 ```text
 RGB (128, 255, 90) 0x80FF5A

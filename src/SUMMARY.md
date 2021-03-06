@@ -5,7 +5,7 @@
 - [인사하기](hello.md)
     - [코멘트](hello/comment.md)
     - [형식을 지정하는 출력](hello/print.md)
-        - [Debug](hello/print/print_debug.md)
+        - [디버그](hello/print/print_debug.md)
         - [Display](hello/print/print_display.md)
             - [테스트 케이스: List](hello/print/print_display/testcase_list.md)
         - [출력 형식](hello/print/fmt.md)
