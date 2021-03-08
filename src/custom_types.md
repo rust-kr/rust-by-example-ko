@@ -1,8 +1,8 @@
-# Custom Types
+# 사용자 정의 자료형
 
-Rust custom data types are formed mainly through the two keywords:
+러스트의 사용자 정의 자료형은 두개의 키워드로 만듭니다.
 
-* `struct`: define a structure
-* `enum`: define an enumeration
+* `struct`: 구조체 정의
+* `enum`: 열거형 정의
 
-Constants can also be created via the `const` and `static` keywords.
+상수의 경우에는 `const` 와 `static` 키워드로 생성합니다.

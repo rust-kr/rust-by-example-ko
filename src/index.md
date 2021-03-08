@@ -21,11 +21,11 @@
 
 - [자료형](types.md) - Learn about changing and defining types.
 
-- [변환](conversion.md)
+- [형변환](conversion.md)
 
 - [표현식](expression.md)
 
-- [실행 제어](flow_control.md) - `if`/`else`, `for`, and others.
+- [제어문](flow_control.md) - `if`/`else`, `for`, and others.
 
 - [함수](fn.md) - Learn about Methods, Closures and High Order Functions.
 

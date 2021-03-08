@@ -1,4 +1,4 @@
-# Structures
+# 구조체
 
 There are three types of structures ("structs") that can be created using the
 `struct` keyword:
