@@ -4,5 +4,5 @@
 
 작업방식은 위키페이지에 적었습니다. https://github.com/rust-lang-ko/rust-by-example-ko/wiki
 
-현재까지 작업 결과는 https://rust-by-example-ko-main.vercel.app 에서 프리뷰를 보실 수 있습니다.
+현재까지 작업 결과는 https://rust-by-example-ko.vercel.app 에서 프리뷰를 보실 수 있습니다.
 
