@@ -1,11 +1,10 @@
 # 구조체
 
-There are three types of structures ("structs") that can be created using the
-`struct` keyword:
+`struct` 키워드로 만들 수 있는 구조체에는 3가지 타입이 있습니다.
 
-* Tuple structs, which are, basically, named tuples.
-* The classic [C structs][c_struct]
-* Unit structs, which are field-less, are useful for generics.
+* 튜플 구조체. 이것은 기본적으로 네임드 튜플입니다.
+* 고전적인 [C 언어의 구조체][c_struct].
+* 유닛 구조체. 필드가 없는 제너릭에 유용한 구조체입니다.
 
 ```rust,editable
 #[derive(Debug)]
@@ -97,5 +96,5 @@ fn main() {
 [`attributes`][attributes], and [destructuring][destructuring]
 
 [attributes]: ../attribute.md
-[c_struct]: https://en.wikipedia.org/wiki/Struct_(C_programming_language)
+[c_struct]: https://ko.wikipedia.org/wiki/Struct
 [destructuring]: ../flow_control/match/destructuring.md
