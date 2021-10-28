@@ -64,4 +64,4 @@
 [install]: https://www.rust-lang.org/tools/install
 [std]: https://doc.rust-lang.org/std/
 [home]: https://github.com/rust-lang/rust-by-example
-[home-ko]: https://github.com/rust-lang-ko/rust-by-example-ko
+[home-ko]: https://github.com/rust-kr/rust-by-example-ko
