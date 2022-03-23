@@ -50,11 +50,10 @@ fn main() {
 
 ```
 
-## Type aliases
+## 타입 별칭
 
-If you use a type alias, you can refer to each enum variant via its alias.
-This might be useful if the enum's name is too long or too generic, and you
-want to rename it.
+타입 별칭(alias)을 사용하면, 열거형의 모든 variant를 별칭으로 참조할 수 있습니다.
+열거형의 이름이 너무 길거나 일반적이고 이름을 변경하고 싶다면 타입 별칭이 유용할 수 있습니다. 
 
 ```rust,editable
 enum VeryVerboseEnumOfThingsToDoWithNumbers {
@@ -62,17 +61,16 @@ enum VeryVerboseEnumOfThingsToDoWithNumbers {
     Subtract,
 }
 
-// Creates a type alias
+// 타입 별칭을 만듭니다.
 type Operations = VeryVerboseEnumOfThingsToDoWithNumbers;
 
 fn main() {
-    // We can refer to each variant via its alias, not its long and inconvenient
-    // name.
+    // 이제 길고 불편한 이름을 사용하지 않고, 각각의 variant를 별칭을 통해 참조할 수 있습니다.
     let x = Operations::Add;
 }
 ```
 
-The most common place you'll see this is in `impl` blocks using the `Self` alias.
+타입 별칭을 가장 흔히 보시게 될 곳은 `Self` 별칭을 사용한 `impl`블록일 것입니다.
 
 ```rust,editable
 enum VeryVerboseEnumOfThingsToDoWithNumbers {
@@ -90,9 +88,7 @@ impl VeryVerboseEnumOfThingsToDoWithNumbers {
 }
 ```
 
-To learn more about enums and type aliases, you can read the
-[stabilization report][aliasreport] from when this feature was stabilized into
-Rust.
+타입 별칭에 대해 더 자세히 알아보려면, 이 기능이 Rust로 안정되었을 때의 [안정화 보고서][aliasreport]를 참고하세요.
 
 ### 참고
 
