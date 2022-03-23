@@ -1,35 +1,32 @@
-# Enums
+# 열거형
 
-The `enum` keyword allows the creation of a type which may be one of a few
-different variants. Any variant which is valid as a `struct` is also valid as
-an `enum`.
+`enum` 키워드를 사용하면 몇 가지 variant(열거형의 요소) 중 하나의 값이 되는 타입을 만들 수 있습니다. 구조체로 유효한 모든 variant는 열거형으로도 사용될 수 있습니다.
 
 ```rust,editable
-// Create an `enum` to classify a web event. Note how both
-// names and type information together specify the variant:
-// `PageLoad != PageUnload` and `KeyPress(char) != Paste(String)`.
-// Each is different and independent.
+// 웹 이벤트를 분류하는 열거형을 만듭니다. 이름과 타입 정보가 어떻게 열거형의 요소를 명시할 수 있는지 다음을 통해 알아보세요.
+// `PageLoad != PageUnload`와 `KeyPress(char) != Paste(String)`.
+// 이 둘은 서로 다르고 독립적입니다.
 enum WebEvent {
-    // An `enum` may either be `unit-like`,
+    // 열거형은 유사 유닛(unit-like) 형식일 수 있습니다.
     PageLoad,
     PageUnload,
     // like tuple structs,
+    // 튜플 구조체나,
     KeyPress(char),
     Paste(String),
-    // or c-like structures.
+    // C언어다운 구조가 그 예입니다. 
     Click { x: i64, y: i64 },
 }
 
-// A function which takes a `WebEvent` enum as an argument and
-// returns nothing.
+// `WebEvent`열거형을 인자로 받고, 아무것도 반환하지 않는 함수를 정의합니다.
 fn inspect(event: WebEvent) {
     match event {
         WebEvent::PageLoad => println!("page loaded"),
         WebEvent::PageUnload => println!("page unloaded"),
-        // Destructure `c` from inside the `enum`.
+        // 열거형 내부에서`c`를 비구조화(Destructuring)합니다.
         WebEvent::KeyPress(c) => println!("pressed '{}'.", c),
         WebEvent::Paste(s) => println!("pasted \"{}\".", s),
-        // Destructure `Click` into `x` and `y`.
+        // `Click`을 `x`와 `y`로 비구조화합니다.
         WebEvent::Click { x, y } => {
             println!("clicked at x={}, y={}.", x, y);
         },
@@ -38,7 +35,7 @@ fn inspect(event: WebEvent) {
 
 fn main() {
     let pressed = WebEvent::KeyPress('x');
-    // `to_owned()` creates an owned `String` from a string slice.
+    // `to_owned()`메소드는 스트링 슬라이스를 인자로 받아 소유권이 있는 `String`을 생성합니다.
     let pasted  = WebEvent::Paste("my text".to_owned());
     let click   = WebEvent::Click { x: 20, y: 80 };
     let load    = WebEvent::PageLoad;
@@ -97,9 +94,9 @@ To learn more about enums and type aliases, you can read the
 [stabilization report][aliasreport] from when this feature was stabilized into
 Rust.
 
-### See also:
+### 참고
 
-[`match`][match], [`fn`][fn], and [`String`][str], ["Type alias enum variants" RFC][type_alias_rfc]
+[`match`][match], [`fn`][fn], [`String`][str], ["Type alias enum variants" RFC][type_alias_rfc]
 
 [c_struct]: https://en.wikipedia.org/wiki/Struct_(C_programming_language)
 [match]: ../flow_control/match.md
